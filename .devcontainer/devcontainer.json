@@ -1,0 +1,10 @@
+{
+    "name": "Microsoft Build Excercise 1",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot"
+            ]
+        }
+    }
+}
