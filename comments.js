@@ -1,44 +1,23 @@
 // Create a web server
+// Create a listener
+// Create a response
+// Create a request
+// Create a route
+// Create a method
+// Create a status code
+// Create a header
+// Create a body
+// Create a JSON object
+// Create a JSON string
+// Create a JSON response
 
-// Require express
-const express = require('express');
-const app = express();
-const comments = require('./comments.json');
+var express = require('express');
+var app = express();
 
-// Middleware
-app.use(express.json());
-
-// Create a post request
-app.post('/comments', (req, res) => {
-  const { username, comment } = req.body;
-  comments.push({ username, comment });
-  res.status(201).send('Comment added');
+app.get('/', function(req, res){
+    res.send('Hello World');
 });
 
-// Create a get request
-app.get('/comments', (req, res) => {
-  res.status(200).send(comments);
-});
-
-// Create a delete request
-app.delete('/comments/:index', (req, res) => {
-  const { index } = req.params;
-  if (comments[index]) {
-    comments.splice(index, 1);
-    res.status(204).send('Comment deleted');
-  } else {
-    res.status(404).send('Comment not found');
-  }
-});
-
-// Create a put request
-app.put('/comments/:index', (req, res) => {
-  const { index } = req.params;
-  const { username, comment } = req.body;
-  if (comments[index]) {
-    comments[index] = { username, comment };
-    res.status(200).send('Comment updated');
-  } else {
-    res.status(404).send('Comment not found');
-  }
+app.listen(3000, function(){
+    console.log('Server is running on http://localhost:3000');
 });
